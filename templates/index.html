@@ -1,0 +1,55 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+  <h1>Caffe Wifi</h1>
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Location</th>
+          <th scope="col">Sockets</th>
+          <th scope="col">Toilet</th>
+          <th scope="col">Wifi</th>
+          <th scope="col">Calls</th>
+          <th scope="col">Seats</th>
+          <th scope="col">Price</th>
+          <th scope="col">Map URL</th>
+          <th scope="col">IMG URL</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for caffe in all_caffes: %}
+        <tr>
+          <th scope="row">{{caffe.id}}</th>
+          <td>{{caffe.name}}</td>
+          <td>{{caffe.location}}</td>
+          <td>{{caffe.has_sockets}}</td>
+          <td>{{caffe.has_toilet}}</td>
+          <td>{{caffe.has_wifi}}</td>
+          <td>{{caffe.can_take_calls}}</td>
+          <td>{{caffe.seats}}</td>
+          <td>{{caffe.coffee_price}}</td>
+          <td><a href={{caffe.map_url}}>map URL</a></td>
+          <td><a href={{caffe.img_url}}>img URL</a></td>
+        </tr>
+      {% endfor %}
+          <tr>
+            <form action="add" method="post">
+              <th scope="row"><button type="submit">Add</button></th>
+              <td><input type="text" name="name" required></td>
+              <td><input type="text" name="loc" required></td>
+              <td><input type="text" name="soc" required></td>
+              <td><input type="text" name="toilet" required></td>
+              <td><input type="text" name="wifi" required></td>
+              <td><input type="text" name="calls" required></td>
+              <td><input type="text" name="seats" required></td>
+              <td><input type="number" name="price" required></td>
+              <td><input type="url" name="img_url" required></td>
+              <td><input type="url" name="map_url" required></td>
+            </form>
+          </tr>
+      </tbody>
+    </table>
+
+{% endblock %}
